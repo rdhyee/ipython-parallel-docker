@@ -15,8 +15,9 @@ RUN apt-get install wget && \
   pip install mpi4py && \
   apt-get clean -y
 
+RUN mkdir /notebooks2
 
-RUN cd /notebooks && git clone https://github.com/minrk/IPython-parallel-tutorial.git
+RUN cd /notebooks2 && git clone -v https://github.com/minrk/IPython-parallel-tutorial.git IPython-parallel-tutorial
 
 # some of the stuff I've started installing for OpenCV --> not complete yet
 # maybe http://packages.ubuntu.com/source/trusty/opencv
@@ -32,4 +33,5 @@ RUN cd /notebooks && git clone https://github.com/minrk/IPython-parallel-tutoria
 
 
 EXPOSE 8888
+WORKDIR /notebooks2
 CMD /notebook.sh
